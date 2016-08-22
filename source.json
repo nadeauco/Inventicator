@@ -1,0 +1,224 @@
+{
+
+	"version": "5.2",
+
+	"questionTemplate": {
+		"selectQuestion": {
+			"type": "select/plus/plusminus",
+			"heading": "",
+			"caption": "",
+			"instructions": "",
+			"options": {
+				"handle1": {
+					"caption": "",
+					"score": 0,
+					"default": true
+				},
+				"handle2": {
+					"caption": "",
+					"score": 0
+				}
+			}
+		}
+	},
+
+	"questions": {
+
+		"prototype": {
+
+			"type": "select",
+			"number": "1a",
+			"heading": "Prototype",
+			"caption": "How developed is the prototype?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"drawing": {
+					"caption": "Drawing, written description",
+					"score": 1,
+					"default": true
+				},
+				"rendering": {
+					"caption": "3D rendering or video",
+					"score": 2
+				},
+				"rough": {
+					"caption": "Rough functional prototype",
+					"score": 3
+				},
+				"solidworks": {
+					"caption": "Solidworks model",
+					"score": 4
+				},
+				"working": {
+					"caption": "Professionally built working model",
+					"score": 5
+				},
+				"refined": {
+					"caption": "Refined and engineered working model",
+					"score": 6
+				},
+				"production": {
+					"caption": "Production unit",
+					"score": 7
+				}
+			}
+
+		},
+
+		"priorArtSearch": {
+
+			"type": "select",
+			"number": "1b",
+			"heading": "Prior Art Search",
+			"caption": "Search of prior art?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"none": {
+					"caption": "No search",
+					"score": 1
+				},
+				"retail": {
+					"caption": "Web search or search of retail markets",
+					"score": 2,
+					"default": true
+				},
+				"inventor": {
+					"caption": "Inventor search of US patents",
+					"score": 4
+				},
+				"professionalUs": {
+					"caption": "Professional search of US patents",
+					"score": 6
+				},
+				"professionalUsAndInternational": {
+					"caption": "Professional search of US & international patents",
+					"score": 7
+				}
+			}
+
+		},
+
+		"searchResults": {
+
+			"type": "select",
+			"number": "1c",
+			"heading": "Search Results",
+			"caption": "Unique features/process?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"noSearch": {
+					"caption": "Many similar structures/processes, or no search",
+					"score": -30
+				},
+				"similar": {
+					"caption": "Similar structures/processes",
+					"score": -10,
+					"default": true
+				},
+				"nonCritical": {
+					"caption": "One or more non-critical strucutres/processes is different",
+					"score": 0
+				},
+				"critical": {
+					"caption": "One critical structure/process is different",
+					"score": 5
+				},
+				"multipleCritical": {
+					"caption": "Multiple critical strucutres/processes are different",
+					"score": 10
+				}
+			}
+
+		},
+
+		"patent": {
+
+			"type": "select",
+			"number": "1d",
+			"heading": "Patent",
+			"caption": "Has a patent been issued?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"noFiling": {
+					"caption": "No filing",
+					"score": 1,
+					"default": true
+				},
+				"inventorFiled": {
+					"caption": "Inventor filed provisional patent",
+					"score": 2
+				},
+				"professionallyFiled": {
+					"caption": "Professionally filed provisional, international, or design patent",
+					"score": 3
+				},
+				"nonProvisional": {
+					"caption": "Filed US non-provisional patent / issued design patent",
+					"score": 4
+				},
+				"utility": {
+					"caption": "Published utility patent",
+					"score": 5
+				},
+				"utilityPositive": {
+					"caption": "Published US utility patent with positive examiner response",
+					"score": 6
+				},
+				"issued": {
+					"caption": "Issued/allowed utility patent",
+					"score": 7
+				}
+			}
+
+		},
+
+		"trademark": {
+
+			"type": "select",
+			"number": "1e",
+			"heading": "Trademark",
+			"caption": "Has a trademark been issued?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"noBrand": {
+					"caption": "No brand name",
+					"score": 1,
+					"default": true
+				},
+				"using": {
+					"caption": "Using name with TM on sales sheet or website",
+					"score": 2
+				},
+				"inventorFiled": {
+					"caption": "Inventor filed US trademark",
+					"score": 3
+				},
+				"professionallyFiled": {
+					"caption": "Professionally filed US trademark",
+					"score": 4
+				},
+				"issued": {
+					"caption": "Issued/allowed US registered trademark",
+					"score": 6
+				},
+				"registered": {
+					"caption": "Registered trademark with corresponding .com domain name",
+					"score": 7
+				}
+			}
+
+		}
+
+	}
+
+}

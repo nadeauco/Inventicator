@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Inventicator</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+<div id="vueTemplates" style="display: none;">
+
+	<template id="tmp-inv-question">
+		loading...
+	</template>
+
+	<template id="tmp-inv-question-select">
+
+		<h3>{{ question.heading }}</h3>
+		<p><strong>{{ question.caption }}</strong></p>
+		<p><em>{{ question.instructions }}</em></p>
+
+		<select :name='inputName' v-model='question.currentAnswer'>
+			<option v-for="(handle, option) in question.options" :value='handle' :selected='option.default'>
+				{{ option.caption }} ({{ option.score }})
+			</option>
+		</select>
+
+	</template>
+
+</div>
+
+
+
+<div id="inventicatorApp">
+	<h1>Inventicator</h1>
+
+	<ul>
+		<li v-for="(handle, question) in questions">
+			<inv-question :handle="handle"></inv-question>
+		</li>
+	</ul>
+
+	<!--<p>{{ questions.prototype.heading }}</p>-->
+	<!--<input v-model="questions.prototype.heading">-->
+
+	<hr>
+
+	<h2>Dev: Current Answers</h2>
+	<pre>{{ currentAnswers | json 4 }}</pre>
+
+	<h2>Dev: Current Scores</h2>
+	<pre>{{ currentScores | json 4 }}</pre>
+
+	<h2>Dev: Totals</h2>
+	<pre>{{ totals | json 4 }}</pre>
+
+</div>
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>-->
+<script src="js/vue.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/inventicator.js"></script>
+
+</body>
+</html>
