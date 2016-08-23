@@ -9,7 +9,7 @@
 <div id="vueTemplates" style="display: none;">
 
 	<template id="tmp-inv-question">
-		loading...
+		Question.
 	</template>
 
 	<template id="tmp-inv-question-select">
@@ -26,6 +26,49 @@
 
 	</template>
 
+	<template id="tmp-inv-question-multiselect">
+
+		<h3>{{ question.heading }}</h3>
+		<p><strong>{{ question.caption }}</strong></p>
+		<p><em>{{ question.instructions }}</em></p>
+
+		<div v-for="(handle, option) in question.options">
+			<label for="#{{ question.handle }}_{{ handle }}">
+				<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}" :value='handle' v-model='question.currentAnswer'>
+				{{ option.caption }}
+			</label>
+		</div>
+
+	</template>
+
+	<template id="tmp-inv-question-plusminus">
+
+		<h3>{{ question.heading }}</h3>
+		<p><strong>{{ question.caption }}</strong></p>
+		<p><em>{{ question.instructions }}</em></p>
+
+		<table>
+			<tr v-for="(handle, option) in question.options">
+				<td>
+					{{ option.caption }}
+				</td>
+				<td>
+					<label for="#{{ question.handle }}_{{ handle }}_plus">
+						<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}_plus" value='+{{ handle }}' v-model='question.currentAnswer' :checked='option.default || option.plusDefault'>
+						+
+					</label>
+				</td>
+				<td>
+					<label for="#{{ question.handle }}_{{ handle }}_minus">
+						<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}_minus" value='-{{ handle }}' v-model='question.currentAnswer' :checked='option.default || option.minusDefault'>
+						-
+					</label>
+				</td>
+			</tr>
+		</table>
+
+	</template>
+
 </div>
 
 
@@ -35,14 +78,14 @@
 
 	<ul>
 		<li v-for="(handle, question) in questions">
-			<inv-question :handle="handle"></inv-question>
+			<component :is="question.componentName" :handle="handle"></component>
 		</li>
 	</ul>
 
-	<!--<p>{{ questions.prototype.heading }}</p>-->
-	<!--<input v-model="questions.prototype.heading">-->
-
 	<hr>
+
+	<!--<h2>Dev: Questions</h2>-->
+	<!--<pre>{{ questions | json 4 }}</pre>-->
 
 	<h2>Dev: Current Answers</h2>
 	<pre>{{ currentAnswers | json 4 }}</pre>

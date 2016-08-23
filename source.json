@@ -24,7 +24,7 @@
 
 	"questions": {
 
-		"prototype": {
+		"prototypeStatus": {
 
 			"type": "select",
 			"number": "1a",
@@ -214,6 +214,82 @@
 				"registered": {
 					"caption": "Registered trademark with corresponding .com domain name",
 					"score": 7
+				}
+			}
+
+		},
+
+		"marketDefinitionConsumer": {
+
+			"type": "multiselect",
+			"number": "5a",
+			"heading": "Market",
+			"caption": "",
+			"instructions": "",
+			"options": {
+				"age": {
+					"caption": "Age",
+					"score": 1,
+					"default": true
+				},
+				"gender": {
+					"caption": "Gender",
+					"score": 1
+				},
+				"childStatus": {
+					"caption": "Child status",
+					"score": 1
+				},
+				"incomeEducation": {
+					"caption": "Income or education level",
+					"score": 1
+				},
+				"housing": {
+					"caption": "Housing",
+					"score": 1
+				},
+				"diy": {
+					"caption": "DIY",
+					"score": 1
+				}
+			}
+
+		},
+
+		"socialEconomicConsiderations": {
+
+			"type": "plusminus",
+			"number": "8",
+			"heading": "Social/Economic Considerations",
+			"caption": "",
+			"instructions": "",
+			"options": {
+				"publicHealth": {
+					"caption": "Public Health",
+					"score": 1,
+					"default": true
+				},
+				"publicSafety": {
+					"caption": "Public Safety",
+					"score": 1,
+					"plusDefault": true
+				},
+				"publicAccess": {
+					"caption": "Public Access",
+					"score": 1,
+					"minusDefault": true
+				},
+				"environment": {
+					"caption": "Environment",
+					"score": 1
+				},
+				"socialInteraction": {
+					"caption": "Social Interaction",
+					"score": 1
+				},
+				"economy": {
+					"caption": "Economy",
+					"score": 1
 				}
 			}
 
