@@ -282,7 +282,7 @@ var vueModel = {
 
 		},
 
-		grandTotal: function grandTotal()
+		grandTotalRaw: function grandTotalRaw()
 		{
 
 			var e336 = this.socialEconomicConsiderationsTotal;
@@ -295,9 +295,17 @@ var vueModel = {
 			var e55 = this.developmentStatusTotal;
 
 			var g337 = ( e336 + e320 + e295 + e267 + e198 + e152 + e91 + e55 );
-			var e338 = ( g337 > 0 ? g337 : 0 );
 
-			return e338;
+			return g337;
+
+		},
+
+		grandTotal: function grandTotal()
+		{
+
+			var score = ( this.grandTotalRaw > 0 ? this.grandTotalRaw : 0 );
+
+			return score;
 
 		},
 
@@ -312,6 +320,7 @@ var vueModel = {
 				profitInvestment: this.profitInvestmentTotal,
 				feasibility: this.feasibilityTotal,
 				socialEconomicConsiderations: this.socialEconomicConsiderationsTotal,
+				grandTotalRaw: this.grandTotalRaw,
 				grandTotal: this.grandTotal
 			};
 		}

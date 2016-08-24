@@ -219,29 +219,529 @@
 
 		},
 
-		"marketDefinitionConsumer": {
+		"competition": {
+
+			"type": "select",
+			"number": "2a",
+			"heading": "Competition",
+			"caption": "Aggressive competition?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"fortuneHyper": {
+					"caption": "Fortune 100 + hyper aggressive (e.g. automobiles, cell phones)",
+					"score": 1
+				},
+				"fortuneAggressive": {
+					"caption": "Fortune 500 corporations + aggressive",
+					"score": 2
+				},
+				"famousBrands": {
+					"caption": "Famous brands in sales channel",
+					"score": 3
+				},
+				"newerProducts": {
+					"caption": "New products introduced in past year",
+					"score": 4,
+					"default": true
+				},
+				"newProducts": {
+					"caption": "New products introduced in past 2 years",
+					"score": 5
+				},
+				"noNew": {
+					"caption": "No new products introduced in 3+ years",
+					"score": 6
+				},
+				"newCategory": {
+					"caption": "New category",
+					"score": 7
+				}
+			}
+
+		},
+
+		"categoryHype": {
+
+			"type": "select",
+			"number": "2b",
+			"heading": "Category Hype",
+			"caption": "How well known is the category?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"frequentMedia": {
+					"caption": "Frequent media mentions as \"the hot new thing\"",
+					"score": 1
+				},
+				"networkTv": {
+					"caption": "Network TV advertising",
+					"score": 2
+				},
+				"cableTv": {
+					"caption": "Cable TV advertising",
+					"score": 3
+				},
+				"everybodyKnows": {
+					"caption": "Everybody knows this category",
+					"score": 4,
+					"default": true
+				},
+				"mostKnow": {
+					"caption": "Most people know this category",
+					"score": 5
+				},
+				"someKnow": {
+					"caption": "Some people know this category",
+					"score": 6
+				},
+				"unknown": {
+					"caption": "Unknown to the general public",
+					"score": 7
+				}
+			}
+
+		},
+
+		"marketEntry": {
+
+			"type": "select",
+			"number": "2c",
+			"heading": "Market Entry",
+			"caption": "Primary sales channel",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"needChannel": {
+					"caption": "Need to create distribution channel",
+					"score": 1
+				},
+				"involvedSales": {
+					"caption": "Involved sales process (boats, cars, industrial)",
+					"score": 2
+				},
+				"slottingFees": {
+					"caption": "Mass market retailers with slotting fees",
+					"score": 3
+				},
+				"massMarket": {
+					"caption": "Mass-market retailers",
+					"score": 4,
+					"default": true
+				},
+				"stepDistributors": {
+					"caption": "2-step distributors",
+					"score": 5
+				},
+				"independent": {
+					"caption": "Independent Retailers",
+					"score": 6
+				},
+				"direct": {
+					"caption": "Direct to customer",
+					"score": 7
+				}
+			}
+
+		},
+
+		"timeSavings": {
+
+			"type": "select",
+			"number": "3a",
+			"heading": "Time Savings",
+			"caption": "Does the product save time?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"moreTime": {
+					"caption": "Definitely takes more time than alternatives",
+					"score": 1
+				},
+				"longer": {
+					"caption": "Takes a little longer",
+					"score": 2
+				},
+				"neutral": {
+					"caption": "Neutral",
+					"score": 3,
+					"default": true
+				},
+				"savingsClaim": {
+					"caption": "Time savings is a claim but users don't really notice",
+					"score": 4
+				},
+				"fast": {
+					"caption": "Over 1.5X faster than alternatives",
+					"score": 5
+				},
+				"faster": {
+					"caption": "Over 2X faster than alternatives",
+					"score": 6
+				},
+				"fastest": {
+					"caption": "Over 3X faster than alternatives",
+					"score": 7
+				}
+			}
+
+		},
+
+		"moneySavings": {
+
+			"type": "select",
+			"number": "3b",
+			"heading": "Money Savings",
+			"caption": "Does the product save money?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"definitelyMore": {
+					"caption": "Definitely costs more than alternatives",
+					"score": 1
+				},
+				"littleMore": {
+					"caption": "Costs a little more than alternatives",
+					"score": 2
+				},
+				"neutral": {
+					"caption": "Neutral",
+					"score": 3,
+					"default": true
+				},
+				"sometimes": {
+					"caption": "Sometimes saves money",
+					"score": 4
+				},
+				"tenPercent": {
+					"caption": "10% savings",
+					"score": 5
+				},
+				"twentyfivePercent": {
+					"caption": "25% savings",
+					"score": 6
+				},
+				"fiftyPercent": {
+					"caption": "50% or more savings",
+					"score": 7
+				}
+			}
+
+		},
+
+		"otherBenefits": {
+
+			"type": "plusminus",
+			"number": "3c",
+			"heading": "Other Benefits/Drawbacks",
+			"caption": "Other positives and negatives",
+			"instructions": "",
+			"options": {
+				"none": {
+					"caption": "None",
+					"score": 0,
+					"plusDefault": true,
+					"minusDefault": true
+				},
+				"convenience": {
+					"caption": "Convenience",
+					"score": 1
+				},
+				"comfort": {
+					"caption": "Comfort",
+					"score": 1
+				},
+				"durability": {
+					"caption": "Durability",
+					"score": 1
+				},
+				"strengthPower": {
+					"caption": "Strength/Power",
+					"score": 1
+				},
+				"reliability": {
+					"caption": "Reliability",
+					"score": 1
+				},
+				"accuracy": {
+					"caption": "Accuracy",
+					"score": 1
+				},
+				"safety": {
+					"caption": "Safety",
+					"score": 1
+				},
+				"health": {
+					"caption": "Health",
+					"score": 1
+				},
+				"childFriendly": {
+					"caption": "childFriendly",
+					"score": 1
+				},
+				"spaceSaving": {
+					"caption": "Space Saving",
+					"score": 1
+				},
+				"lightWeight": {
+					"caption": "Light Weight",
+					"score": 1
+				},
+				"ergonomics": {
+					"caption": "Ergonomics",
+					"score": 1
+				},
+				"earthFriendly": {
+					"caption": "Earth Friendly",
+					"score": 1
+				},
+				"funCoolBetterLooking": {
+					"caption": "Fun, Cool, Better Looking",
+					"score": 1
+				},
+				"other": {
+					"caption": "Other",
+					"score": 1
+				},
+				"secondOther": {
+					"caption": "Other",
+					"score": 1
+				}
+			}
+
+		},
+
+		"influentials": {
+
+			"type": "select",
+			"number": "3d",
+			"heading": "Influentials",
+			"caption": "Opinions of influential people",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"muchLess": {
+					"caption": "Influentials like much less than alternatives",
+					"score": 1
+				},
+				"lessThan": {
+					"caption": "Influentials like less than alternatives",
+					"score": 2
+				},
+				"same": {
+					"caption": "Influentials like same as alternatives",
+					"score": 4,
+					"default": true
+				},
+				"preferOver": {
+					"caption": "Influentials prefer over alternatives",
+					"score": 5
+				},
+				"stronglyPrefer": {
+					"caption": "Influentials strongly prefer over current/alternative solutions",
+					"score": 7
+				}
+			}
+
+		},
+
+		"problemStrength": {
+
+			"type": "select",
+			"number": "4a",
+			"heading": "Problem Strength",
+			"caption": "Big or small problem?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"worse": {
+					"caption": "Attempting to solve makes problem worse",
+					"score": 1
+				},
+				"noProblem": {
+					"caption": "There is no problem",
+					"score": 2
+				},
+				"minorProblem": {
+					"caption": "Minor problem, people hardly notice",
+					"score": 3
+				},
+				"someCare": {
+					"caption": "Some users care, most don't",
+					"score": 4,
+					"default": true
+				},
+				"mostCare": {
+					"caption": "Most users care",
+					"score": 5
+				},
+				"allCare": {
+					"caption": "All users care but not life changing",
+					"score": 6
+				},
+				"lifeChanging": {
+					"caption": "Life changing problem that all users need solved",
+					"score": 7
+				}
+			}
+
+		},
+
+		"difference": {
+
+			"type": "select",
+			"number": "4b",
+			"heading": "Difference",
+			"caption": "How different is this solution?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"negative": {
+					"caption": "Negative difference",
+					"score": 1
+				},
+				"noDifference": {
+					"caption": "No difference",
+					"score": 2
+				},
+				"needsExplanation": {
+					"caption": "Difference needs explanation",
+					"score": 3
+				},
+				"sameDifference": {
+					"caption": "Small difference, takes time to notice",
+					"score": 4,
+					"default": true
+				},
+				"noticed": {
+					"caption": "Difference noticed immediately",
+					"score": 5
+				},
+				"bigDifference": {
+					"caption": "Big difference noticed immediately",
+					"score": 6
+				},
+				"hugeDifference": {
+					"caption": "Huge difference noticed immediately",
+					"score": 7
+				}
+			}
+
+		},
+
+		"standAloneProduct": {
+
+			"type": "select",
+			"number": "4c",
+			"heading": "Stand Alone Product",
+			"caption": "Does the invention work alone?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"modifiesPart": {
+					"caption": "Modifies a part of an existing product",
+					"score": 1
+				},
+				"modifies": {
+					"caption": "Modifies an existing product",
+					"score": 2
+				},
+				"usedWith": {
+					"caption": "Accessory is used with another product",
+					"score": 3
+				},
+				"addsValue": {
+					"caption": "Accessory adds value to another product",
+					"score": 4,
+					"default": true
+				},
+				"addsGreat": {
+					"caption": "Accessory adds great value to another product",
+					"score": 5
+				},
+				"needsAnother": {
+					"caption": "Needs another product in some manner",
+					"score": 6
+				},
+				"worksAlone": {
+					"caption": "Works alone without other products",
+					"score": 7
+				}
+			}
+
+		},
+
+		"clearBenefits": {
+
+			"type": "select",
+			"number": "4d",
+			"heading": "Clear Benefits",
+			"caption": "Are benefits understood quickly?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"overTwo": {
+					"caption": "Benefits take over 2 minutes to communicate",
+					"score": -30
+				},
+				"sixtyNinety": {
+					"caption": "Benefits take a 60-90 seconds to communicate (text/video)",
+					"score": -15
+				},
+				"thirtySeconds": {
+					"caption": "Benefits take approx 30 seconds to communicate (text/video)",
+					"score": -5
+				},
+				"fiveTen": {
+					"caption": "Benefits understood in 5-10 seconds",
+					"score": 0,
+					"default": true
+				},
+				"addsGreat": {
+					"caption": "Benefits understood in under 5 seconds",
+					"score": 7
+				}
+			}
+
+		},
+
+		"marketConsumer": {
 
 			"type": "multiselect",
 			"number": "5a",
-			"heading": "Market",
+			"heading": "Market (Consumer)",
 			"caption": "",
 			"instructions": "",
 			"options": {
+				"none": {
+					"caption": "No targeting (Everyone)",
+					"score": 0,
+					"default": true
+				},
 				"age": {
 					"caption": "Age",
-					"score": 1,
-					"default": true
+					"score": 1
 				},
 				"gender": {
 					"caption": "Gender",
 					"score": 1
 				},
 				"childStatus": {
-					"caption": "Child status",
+					"caption": "Child Status",
 					"score": 1
 				},
 				"incomeEducation": {
-					"caption": "Income or education level",
+					"caption": "Income or Education Level",
 					"score": 1
 				},
 				"housing": {
@@ -250,7 +750,344 @@
 				},
 				"diy": {
 					"caption": "DIY",
+					"score": 2
+				},
+				"petOwner": {
+					"caption": "Pet Owner",
+					"score": 2
+				},
+				"geo": {
+					"caption": "Geographic Location",
+					"score": 2
+				},
+				"activityInterestHobby": {
+					"caption": "Activity, Interest, Hobby",
+					"score": 5
+				},
+				"entertainmentChoices": {
+					"caption": "Entertainment Choices",
+					"score": 3
+				},
+				"foodPreferences": {
+					"caption": "Food Preferences",
+					"score": 3
+				},
+				"other": {
+					"caption": "Other",
+					"score": 3
+				}
+			}
+
+		},
+
+		"marketNonConsumer": {
+
+			"type": "multiselect",
+			"number": "5a",
+			"heading": "Market (Non-Consumer)",
+			"caption": "",
+			"instructions": "",
+			"options": {
+				"none": {
+					"caption": "No targeting (Everyone)",
+					"score": 0,
+					"default": true
+				},
+				"industry": {
+					"caption": "Industry",
+					"score": 3
+				},
+				"generalProfession": {
+					"caption": "General Profession or Trade (examples: Doctor, Carpenter, Mechanic...)",
+					"score": 4
+				},
+				"specialtyProfession": {
+					"caption": "Specialty Profession or Trade (examples: Dermatologist, Cabinet Maker...)",
+					"score": 6
+				}
+			}
+
+		},
+
+		"marketSize": {
+
+			"type": "select",
+			"number": "5b",
+			"heading": "Market Size",
+			"caption": "Total Addressable Market (Annual sales/buyers)",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"twentyFiveMillion": {
+					"caption": "$25 million+ or 315,000+ buyers",
 					"score": 1
+				},
+				"fiftyMillion": {
+					"caption": "$50 million+ or 725,000+ buyers",
+					"score": 2
+				},
+				"oneHundredMillion": {
+					"caption": "$100 million+ or 1.5 million+ buyers",
+					"score": 3
+				},
+				"twoHundredMillion": {
+					"caption": "$200 million+ or 3 million+ buyers",
+					"score": 4,
+					"default": true
+				},
+				"fourHundredMillion": {
+					"caption": "$400 million+ or 6 million+ buyers",
+					"score": 5
+				},
+				"eightHundredMillion": {
+					"caption": "$800 million+ or 12.5 million+  buyers",
+					"score": 6
+				},
+				"billion": {
+					"caption": "$1.6 billion+ or  25 million+  buyers",
+					"score": 7
+				}
+			}
+
+		},
+
+		"userWantToBuy": {
+
+			"type": "select",
+			"number": "5c",
+			"heading": "User % Want to Buy",
+			"caption": "Users want to buy?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"twenty": {
+					"caption": "2/10 users surveyed want to buy",
+					"score": 1
+				},
+				"thirty": {
+					"caption": "3/10 users surveyed want to buy",
+					"score": 2
+				},
+				"forty": {
+					"caption": "4/10 users surveyed want to buy",
+					"score": 3,
+					"default": true
+				},
+				"twoHundredMillion": {
+					"caption": "5/10 users surveyed want to buy",
+					"score": 4
+				},
+				"sixty": {
+					"caption": "6/10 users surveyed want to buy",
+					"score": 5
+				},
+				"seventy": {
+					"caption": "7/10 users surveyed want to buy",
+					"score": 6
+				},
+				"ninety": {
+					"caption": "9/10 users surveyed want to buy",
+					"score": 7
+				}
+			}
+
+		},
+
+		"buyingDecision": {
+
+			"type": "select",
+			"number": "5d",
+			"heading": "Buying Decision",
+			"caption": "Who makes the buying decision?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"government": {
+					"caption": "Buyer is a government-type entity",
+					"score": 1
+				},
+				"buyerUserDifferent": {
+					"caption": "Buyer and User are DIFFERENT people",
+					"score": 4
+				},
+				"buyerUserSame": {
+					"caption": "Buyer and User are SAME person",
+					"score": 7,
+					"default": true
+				}
+			}
+
+		},
+
+		"seasonalOrYear": {
+
+			"type": "select",
+			"number": "5e",
+			"heading": "Seasonal or Year",
+			"caption": "Is product sold all year long?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"seasonal": {
+					"caption": "Seasonal",
+					"score": 1
+				},
+				"yearRound": {
+					"caption": "Year Round",
+					"score": 7,
+					"default": true
+				}
+			}
+
+		},
+
+		"retailCost": {
+
+			"type": "select",
+			"number": "6a",
+			"heading": "Retail/Cost",
+			"caption": "What is retail price divided by cost?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"oneTimes": {
+					"caption": "1X product cost = retail price",
+					"score": 1
+				},
+				"twoTimes": {
+					"caption": "2X product cost = retail price",
+					"score": 2
+				},
+				"threeTimes": {
+					"caption": "3X product cost = retail price",
+					"score": 3
+				},
+				"fourTimes": {
+					"caption": "4X product cost = retail price",
+					"score": 4,
+					"default": true
+				},
+				"fivePlusTimes": {
+					"caption": "5 or more X product cost = retail price",
+					"score": 5
+				}
+			}
+
+		},
+
+		"mvpCost": {
+
+			"type": "select",
+			"number": "6b",
+			"heading": "MVP Cost",
+			"caption": "$$$ for a Minimally Viable Product (MVP)",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"onePointSix": {
+					"caption": "$1.6MM",
+					"score": 1
+				},
+				"EightHundred": {
+					"caption": "$800",
+					"score": 2
+				},
+				"fourHundredK": {
+					"caption": "$400K",
+					"score": 3
+				},
+				"twoHundredK": {
+					"caption": "$200K",
+					"score": 4,
+					"default": true
+				},
+				"oneHundredK": {
+					"caption": "$100k",
+					"score": 5
+				},
+				"fiftyK": {
+					"caption": "$50K",
+					"score": 6
+				},
+				"twentyFiveOrLess": {
+					"caption": "$25,000 and less",
+					"score": 7
+				}
+			}
+
+		},
+
+		"canItBeMade": {
+
+			"type": "select",
+			"number": "7a",
+			"heading": "Can It Be Made",
+			"caption": "Use conventional technologies?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"perpetualMotion": {
+					"caption": "Claims perpetual motion or energy output exceeds input",
+					"score": 1
+				},
+				"neverTested": {
+					"caption": "Technology that's theoretically possible but has never been tested",
+					"score": 2
+				},
+				"neverCommercialized": {
+					"caption": "Technology that's been successfully tested but never commercialized",
+					"score": 3
+				},
+				"available": {
+					"caption": "Available technology and modified manufacturing",
+					"score": 5
+				},
+				"readilyAvailable": {
+					"caption": "Readily available technology and manufacturing",
+					"score": 7,
+					"default": true
+				}
+			}
+
+		},
+
+		"regulations": {
+
+			"type": "select",
+			"number": "7b",
+			"heading": "Regulations",
+			"caption": "Regulations?",
+			"instructions": "",
+			"lowLabel": "",
+			"highLabel": "",
+			"options": {
+				"heavyRegulations": {
+					"caption": "Heavy regulations on users and sellers",
+					"score": 1
+				},
+				"regulations": {
+					"caption": "Regulations on users and sellers",
+					"score": 3
+				},
+				"userRegulations": {
+					"caption": "Regulations on users",
+					"score": 4
+				},
+				"guidelines": {
+					"caption": "Guidelines / UL approval",
+					"score": 5
+				},
+				"noRegulations": {
+					"caption": "No Regulations",
+					"score": 7,
+					"default": true
 				}
 			}
 
@@ -264,20 +1101,23 @@
 			"caption": "",
 			"instructions": "",
 			"options": {
+				"none": {
+					"caption": "None",
+					"score": 0,
+					"plusDefault": true,
+					"minusDefault": true
+				},
 				"publicHealth": {
 					"caption": "Public Health",
-					"score": 1,
-					"default": true
+					"score": 1
 				},
 				"publicSafety": {
 					"caption": "Public Safety",
-					"score": 1,
-					"plusDefault": true
+					"score": 1
 				},
 				"publicAccess": {
 					"caption": "Public Access",
-					"score": 1,
-					"minusDefault": true
+					"score": 1
 				},
 				"environment": {
 					"caption": "Environment",
