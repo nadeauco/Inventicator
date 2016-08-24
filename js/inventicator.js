@@ -10,7 +10,7 @@ var vueModel = {
 		questions: {},
 		currentAnswers: {},
 		currentScores: {},
-		devMode: false
+		devMode: true
 
 	},
 
@@ -120,7 +120,7 @@ var vueModel = {
 				var score = ( e6 * ( ( ( f24 + e46 + ( 2 * e35 ) ) / 4 ) ) + f33);
 			}
 
-			console.log("Recalculated developmentStatusTotal: " + score);
+			this.log("Recalculated developmentStatusTotal: " + score);
 
 			return score;
 
@@ -438,3 +438,50 @@ Vue.component('inv-question-multiselect', MuliSelectQuestionInput);
 Vue.component('inv-question-plusminus', PlusMinusQuestionInput);
 
 var I = new Vue(vueModel);
+
+///
+
+var Chart = {
+
+	init: function init()
+	{
+
+		google.charts.load('current', {'packages':['gauge']});
+		google.charts.setOnLoadCallback(this.drawChart);
+
+	},
+
+	drawChart: function drawChart()
+	{
+
+		var data = google.visualization.arrayToDataTable([
+			['Label', 'Value'],
+			['Inventicator', 358],
+		]);
+
+		var options = {
+			width: 450, height: 220,
+			min: 0, max: 358,
+			redFrom: 0, redTo: 36,
+			yellowFrom: 100, yellowTo: 199,
+			greenFrom: 200, greenTo: 1000,
+			minorTicks: 10
+		};
+
+		var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+		chart.draw(data, options);
+
+		data.setValue(0, 1, I.grandTotal);
+		chart.draw(data, options);
+
+		I.$watch('grandTotal', function(val, oldVal){
+			data.setValue(0, 1, val);
+			chart.draw(data, options);
+		});
+
+	}
+
+};
+
+Chart.init();

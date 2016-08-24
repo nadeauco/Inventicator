@@ -12,6 +12,8 @@
 			right: 0;
 			height: 100%;
 			overflow: scroll;
+			background: #eee;
+			padding: 1em;
 		}
 	</style>
 
@@ -46,7 +48,7 @@
 
 		<div v-for="(handle, option) in question.options">
 			<label for="#{{ question.handle }}_{{ handle }}">
-				<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}" :value='handle' v-model='question.currentAnswer'>
+				<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}" :value='handle' v-model='question.currentAnswer' :checked='option.default'>
 				{{ option.caption }}
 			</label>
 		</div>
@@ -94,10 +96,9 @@
 		</li>
 	</ul>
 
-	<!--<h2>Dev: Questions</h2>-->
-	<!--<pre>{{ questions | json 4 }}</pre>-->
-
 	<div class="devBox">
+
+		<div id="chart_div" style="width: 100%;"></div>
 
 		<h2>Dev: Current Answers</h2>
 		<pre>{{ currentAnswers | json 4 }}</pre>
@@ -116,7 +117,10 @@
 <!--<script src="https://cdn.jsdelivr.net/vue.resource/0.9.3/vue-resource.min.js"></script>-->
 <script src="js/vue.js"></script>
 <script src="js/vue-resource.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/inventicator.js"></script>
+
+
 
 </body>
 </html>

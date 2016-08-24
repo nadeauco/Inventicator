@@ -2,26 +2,6 @@
 
 	"version": "5.2",
 
-	"questionTemplate": {
-		"selectQuestion": {
-			"type": "select/plus/plusminus",
-			"heading": "",
-			"caption": "",
-			"instructions": "",
-			"options": {
-				"handle1": {
-					"caption": "",
-					"score": 0,
-					"default": true
-				},
-				"handle2": {
-					"caption": "",
-					"score": 0
-				}
-			}
-		}
-	},
-
 	"questions": {
 
 		"prototypeStatus": {
@@ -504,12 +484,12 @@
 					"caption": "Fun, Cool, Better Looking",
 					"score": 1
 				},
-				"other": {
-					"caption": "Other",
+				"other1": {
+					"caption": "Other (1)",
 					"score": 1
 				},
-				"secondOther": {
-					"caption": "Other",
+				"other2": {
+					"caption": "Other (2)",
 					"score": 1
 				}
 			}
