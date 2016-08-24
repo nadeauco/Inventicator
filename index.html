@@ -6,7 +6,14 @@
 	<meta charset="utf-8">
 
 	<style>
-		.devBox {
+
+		.question {
+			margin: 1em;
+			padding: 1em;
+			background: #eff;
+		}
+
+		.debugger {
 			position: fixed;
 			top: 0;
 			right: 0;
@@ -15,6 +22,7 @@
 			background: #eee;
 			padding: 1em;
 		}
+
 	</style>
 
 </head>
@@ -23,7 +31,7 @@
 <div id="vueTemplates" style="display: none;">
 
 	<template id="tmp-inv-question">
-		Question.
+		This question could not be loaded.
 	</template>
 
 	<template id="tmp-inv-question-select">
@@ -88,26 +96,67 @@
 
 
 <div id="inventicatorApp">
+
 	<h1>Inventicator</h1>
 
-	<ul>
+	<hr>
+
+	<h6>Example of how to render questions individually:</h6>
+
+	<div class="question">
+		<inv-question-select handle="marketSize" v-if="questionsLoaded"></inv-question-select>
+	</div>
+
+	<div class="question">
+		<p>
+			<input type="radio" name="marketType" value="Consumer" v-model="marketType"> Consumer
+		</p>
+		<p>
+			<input type="radio" name="marketType" value="NonConsumer" v-model="marketType"> Non-consumer
+		</p>
+		<inv-question-multiselect handle="marketConsumer" v-if="questionsLoaded && marketType == 'Consumer'"></inv-question-multiselect>
+		<inv-question-multiselect handle="marketNonConsumer" v-if="questionsLoaded && marketType == 'NonConsumer'"></inv-question-multiselect>
+	</div>
+
+	<div class="question">
+		<inv-question-plusminus handle="socialEconomicConsiderations" v-if="questionsLoaded"></inv-question-plusminus>
+	</div>
+
+	<hr>
+
+	<h6>Demo of all questions:</h6>
+
+	<ul style="background: #ffe;">
 		<li v-for="(handle, question) in questions">
 			<component :is="question.componentName" :handle="handle"></component>
 		</li>
 	</ul>
 
-	<div class="devBox">
+	<hr>
+
+	<h6>Example of how to render totals for submission via form:</h6>
+
+	<ul style="background: #ffe;">
+		<li v-for="(handle, total) in totals">
+			<label for="{{ handle }}">{{ handle }}: </label>
+			<input type="text" disabled name="totals[{{ handle }}]" value="{{ total }}">
+		</li>
+	</ul>
+
+	<!-- Debugger -->
+
+	<div class="debugger">
 
 		<div id="chart_div" style="width: 100%;"></div>
 
-		<h2>Dev: Current Answers</h2>
+		<h2>Totals</h2>
+		<pre>{{ totals | json 4 }}</pre>
+
+		<h2>Current Answers</h2>
 		<pre>{{ currentAnswers | json 4 }}</pre>
 
-		<!--<h2>Dev: Current Scores</h2>-->
-		<!--<pre>{{ currentScores | json 4 }}</pre>-->
-
-		<h2>Dev: Totals</h2>
-		<pre>{{ totals | json 4 }}</pre>
+		<h2>Current Scores</h2>
+		<pre>{{ currentScores | json 4 }}</pre>
 
 	</div>
 
@@ -119,8 +168,6 @@
 <script src="js/vue-resource.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/inventicator.js"></script>
-
-
 
 </body>
 </html>

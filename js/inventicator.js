@@ -8,9 +8,11 @@ var vueModel = {
 
 		source: {},
 		questions: {},
+		questionsLoaded: false,
 		currentAnswers: {},
 		currentScores: {},
-		devMode: true
+		marketType: '',
+		devMode: false
 
 	},
 
@@ -305,7 +307,7 @@ var vueModel = {
 
 			var score = ( this.grandTotalRaw > 0 ? this.grandTotalRaw : 0 );
 
-			return score;
+			return Math.round(score);
 
 		},
 
@@ -377,6 +379,9 @@ var vueModel = {
 				}
 
 			}
+
+			// Let the VM know it's okay to render questions...
+			this.questionsLoaded = true;
 
 		},
 
