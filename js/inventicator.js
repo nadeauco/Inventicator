@@ -9,7 +9,8 @@ var vueModel = {
 		source: {},
 		questions: {},
 		currentAnswers: {},
-		currentScores: {}
+		currentScores: {},
+		devMode: false
 
 	},
 
@@ -95,10 +96,14 @@ var vueModel = {
 		developmentStatusTotal: function developmentStatusTotal()
 		{
 
-			var prototypeStatus = this.getScore('prototypeStatus');
-			var trademark = this.getScore('trademark');
-			var patent = this.getScore('patent');
-			var priorArtSearch = this.getScore('priorArtSearch');
+			var e6 = this.getScore('prototypeStatus');
+			var e17 = this.getScore('priorArtSearch');
+			var e26 = this.getScore('searchResults');
+			var e35 = this.getScore('patent');
+			var e46 = this.getScore('trademark');
+
+			var f24 = ( e17 > 1 ? ( 2 * ( e17 - 2 ) ) : -30 ); // Prior Art Search multiplier
+			var f33 = e26; // Search Results multiplier
 
 			// =IF(
 			//  F24=-30,
@@ -106,13 +111,13 @@ var vueModel = {
 			//  (+E6*(((+F24+E46+(2*E35))/4))+F33)
 			// )
 
-			if ( this.getAnswer('searchResults') == 'noSearch' )
+			if ( this.getScore('searchResults') == 'noSearch' )
 			{
-				var score = prototypeStatus * ( ( ( trademark + ( 2 * patent ) ) / 4 ) ) + priorArtSearch - 30;
+				var score = ( e6 * ( ( ( e46 + ( 2 * e35 ) ) / 4 ) ) + f33 - 30);
 			}
 			else
 			{
-				var score = prototypeStatus * ( ( ( trademark + ( 2 * patent ) ) / 4 ) ) + priorArtSearch;
+				var score = ( e6 * ( ( ( f24 + e46 + ( 2 * e35 ) ) / 4 ) ) + f33);
 			}
 
 			console.log("Recalculated developmentStatusTotal: " + score);
@@ -124,15 +129,17 @@ var vueModel = {
 		salesChannelTotal: function salesChannelTotal()
 		{
 
-			var competition = this.getScore('competition');
-			var categoryHype = this.getScore('categoryHype');
-			var marketEntry = this.getScore('marketEntry');
+			var e59 = this.getScore('competition');
+			var e70 = this.getScore('categoryHype');
+			var e81 = this.getScore('marketEntry');
+
+			var f90 = ( e81 < 3 ? ( ( ( -1 / e81 ) * 10 ) ) : e81 ); // Market Entry multiplier
 
 			// =(+E59+E70+F90)
 
-			var score = 0; // TODO
+			var score = e59 + e70 + f90;
 
-			console.log("Recalculated salesChannelTotal: " + score);
+			this.log("Recalculated salesChannelTotal: " + score);
 
 			return score;
 
@@ -141,16 +148,22 @@ var vueModel = {
 		compareToAlternativesTotal: function compareToAlternativesTotal()
 		{
 
-			var timeSavings = this.getScore('timeSavings');
-			var moneySavings = this.getScore('moneySavings');
-			var otherBenefits = this.getScore('otherBenefits');
-			var influentials = this.getScore('influentials');
+			var e96 = this.getScore('timeSavings');
+			var e108 = this.getScore('moneySavings');
+			var e141 = this.getScore('otherBenefits') * 2;
+			var e144 = this.getScore('influentials');
+
+			var f105 = ( e96 > 2 ? 1 : -1 ); // Time Savings multiplier
+			var f106 = ( e96 > 1 ? 1 : 10 ); // Time Savings multiplier
+			var f117 = ( e108 > 2 ? 1 : -1 ); // Money Savings multiplier
+			var f118 = ( e108 > 1 ? 1 : 10 ); // Money Savings multiplier
+			var f151 = ( ( ( e144 * 2 ) - 5 ) * 3 ) - 9; // Influentials multiplier
 
 			// =(E96*(F105*F106))+(E108*(F117*F118))+(E141+F151)
 
-			var score = 0; // TODO
+			var score = ( e96 * ( f105 * f106 ) ) + ( e108 * ( f117 * f118 ) ) + ( e141 + f151 );
 
-			console.log("Recalculated compareToAlternativesTotal: " + score);
+			this.log("Recalculated compareToAlternativesTotal: " + score);
 
 			return score;
 
@@ -159,16 +172,21 @@ var vueModel = {
 		conceptStrengthTotal: function conceptStrengthTotal()
 		{
 
-			var problemStrength = this.getScore('problemStrength');
-			var difference = this.getScore('difference');
-			var standAloneProduct = this.getScore('standAloneProduct');
-			var clearBenefits = this.getScore('clearBenefits');
+			var e156 = this.getScore('problemStrength');
+			var e168 = this.getScore('difference');
+			var e180 = this.getScore('standAloneProduct');
+			var e191 = this.getScore('clearBenefits');
+
+			var f165 = ( e156 > 2 ? 1 : -5 ); // Problem Strenth multiplier
+			var f166 = ( e156 > 1 ? 1 : 7 ) ; // Problem Strenth multiplier
+			var f177 = ( e168 > 2 ? 1 : -3 ); // Difference multiplier
+			var f178 = ( e168 > 1 ? 1 : 7 ); // Difference multiplier
 
 			// =(E156*(F165*F166))+(E168*(F177*F178))+E180+E191
 
-			var score = 0; // TODO
+			var score = ( e156 * ( f165 * f166 ) ) + ( e168 * ( f177 * f178) ) + e180 + e191;
 
-			console.log("Recalculated conceptStrengthTotal: " + score);
+			this.log("Recalculated conceptStrengthTotal: " + score);
 
 			return score;
 
@@ -177,18 +195,25 @@ var vueModel = {
 		marketTotal: function marketTotal()
 		{
 
-			var marketConsumer = this.getScore('marketConsumer');
-			var marketNonConsumer = this.getScore('marketNonConsumer');
-			var marketSize = this.getScore('marketSize');
-			var userWantToBuy = this.getScore('userWantToBuy');
-			var buyingDecision = this.getScore('buyingDecision');
-			var seasonalOrYear = this.getScore('seasonalOrYear');
+			var e233 = this.getScore('marketSize');
+			var e244 = this.getScore('userWantToBuy');
+			var e255 = this.getScore('buyingDecision');
+			var e262 = this.getScore('seasonalOrYear');
+
+			var f221 = this.getScore('marketConsumer'); // Market (Consumer) total
+			var f222 = ( f221 > 7 ? 7 : f221) ; // Market (Consumer) multiplier/limiter
+			var f228 = this.getScore('marketNonConsumer'); // Market (Non-Consumer) total
+			var f229 = ( f228 > 7 ? 7 : f228) ; // Market (Non-Consumer) multiplier/limiter
+			var e230 = ( f222 > 1 ? f222 : f229 );
+			var f242 = e233 * e230 / 2; // Market Size multiplier
 
 			// =(E244*F242/3)-((7-E255)*7)-(7-E262)
 
-			var score = 0; // TODO
+			var score = ( e244 * f242 / 3 ) - ( ( 7 - e255 ) * 7 ) - ( 7 - e262 );
 
-			console.log("Recalculated marketTotal: " + score);
+			// TODO: Change option values to match F221 and F228 properly
+
+			this.log("Recalculated marketTotal: " + score);
 
 			return score;
 
@@ -197,14 +222,22 @@ var vueModel = {
 		profitInvestmentTotal: function profitInvestmentTotal()
 		{
 
-			var retailCost = this.getScore('retailCost');
-			var mvpCost = this.getScore('mvpCost');
+			var e267 = this.marketTotal;
+
+			var e271 = this.getScore('retailCost');
+			var e278 = ( e271 > 3 ? e271 : ( e271 - 4 ) * 10 ); // Retail/Cost adjust
+			var e279 = ( e271 == 1 ? 10 : 1 ); // Retail/Cost adjust
+			var e280 = ( e271 == 2 ? 2 : 1 ); // Retail/Cost adjust
+			var e281 = ( e278 * e279 * e280 ) + ( e267 / 2 ); // Retail/Cost total profit value
+
+			var e285 = this.getScore('mvpCost');
+			var d294 = ( ( e271 > 3 && e267 > 0 ) ? ( e267 + 10 ) / ( 6 - e271 ) : e281 ); // MVP Cost profit value
 
 			// =+D294+E285
 
-			var score = 0; // TODO
+			var score = d294 + e285;
 
-			console.log("Recalculated profitInvestmentTotal: " + score);
+			this.log("Recalculated profitInvestmentTotal: " + score);
 
 			return score;
 
@@ -213,14 +246,22 @@ var vueModel = {
 		feasibilityTotal: function feasibilityTotal()
 		{
 
-			var canItBeMade = this.getScore('canItBeMade');
-			var regulations = this.getScore('regulations');
+			var e299 = this.getScore('canItBeMade');
+			var e306 = ( e299 == 1 ? 500 : 1 ); // perpetual motion adjust
+			var e307 = ( e299 == 2 ? 7 : 1 ); // new tech adjust
+			var e308 = ( e299 == 3 ? 3 : 1 ); // tested tech adjust
 
-			// =IF(E320>-10000,E320,"Violates Laws of Physics")
+			var e310 = this.getScore('regulations');
+			var e317 = ( e310 == 1 ? 3 : 1 ); // FDA approval adjust
+			var e318 = ( e310 == 3 ? 2 : 1 ); // EPA reporting adjust
+			var e319 = ( e310 == 3 ? 3 : 1 ); // guidelines adjust
 
-			var score = 0; // TODO
+			var e320 = ( ( e299 - 7 ) * 3 * e306 * e307 * e308 ) + ( ( e310 - 7 ) * 3 * e317 * e318 );
 
-			console.log("Recalculated feasibilityTotal: " + score);
+			var score = ( e320 > -10000 ? e320 : -1/.00001 );
+			// If `canItBeMade` is answered with `claimsPerpetualMotion`, this invention "Violates Laws of Physics"
+
+			this.log("Recalculated feasibilityTotal: " + score);
 
 			return score;
 
@@ -235,13 +276,32 @@ var vueModel = {
 
 			var score = socialEconomicConsiderations * 5;
 
-			console.log("Recalculated socialEconomicConsiderationsTotal: " + score);
+			this.log("Recalculated socialEconomicConsiderationsTotal: " + score);
 
 			return score;
 
 		},
 
-		totals: function()
+		grandTotal: function grandTotal()
+		{
+
+			var e336 = this.socialEconomicConsiderationsTotal;
+			var e320 = this.feasibilityTotal;
+			var e295 = this.profitInvestmentTotal;
+			var e267 = this.marketTotal;
+			var e198 = this.conceptStrengthTotal;
+			var e152 = this.compareToAlternativesTotal;
+			var e91 = this.salesChannelTotal;
+			var e55 = this.developmentStatusTotal;
+
+			var g337 = ( e336 + e320 + e295 + e267 + e198 + e152 + e91 + e55 );
+			var e338 = ( g337 > 0 ? g337 : 0 );
+
+			return e338;
+
+		},
+
+		totals: function totals()
 		{
 			return {
 				developmentStatus: this.developmentStatusTotal,
@@ -251,7 +311,8 @@ var vueModel = {
 				market: this.marketTotal,
 				profitInvestment: this.profitInvestmentTotal,
 				feasibility: this.feasibilityTotal,
-				socialEconomicConsiderations: this.socialEconomicConsiderationsTotal
+				socialEconomicConsiderations: this.socialEconomicConsiderationsTotal,
+				grandTotal: this.grandTotal
 			};
 		}
 
@@ -259,31 +320,31 @@ var vueModel = {
 
 	methods: {
 
-		fetchData: function ()
+		fetchData: function fetchData()
 		{
 
-			console.log("Loading...");
+			this.log("Loading...");
 			this.$http.get(apiURL).then(
 				function(data) {
-					console.log(data);
+					this.log(data);
 					this.source = data.data;
-					console.log("Loaded.");
+					this.log("Loaded.");
 					Vue.nextTick(this.setUpQuestions);
 					return true;
 				},
 				function(data)  {
-					console.log("Error.");
-					console.log(data);
+					this.log("Error.");
+					this.log(data);
 					return false;
 				}
 			);
 
 		},
 
-		setUpQuestions: function()
+		setUpQuestions: function setUpQuestions()
 		{
 
-			console.log("setUpQuestions()");
+			this.log("setUpQuestions()");
 
 			// Load in questions from source.
 			this.$set('questions', this.source.questions);
@@ -310,14 +371,19 @@ var vueModel = {
 
 		},
 
-		getScore: function(handle)
+		getScore: function getScore(handle)
 		{
 			return this.$get('currentScores.' + handle) || 0;
 		},
 
-		getAnswer: function(handle)
+		getAnswer: function getAnswer(handle)
 		{
 			return this.$get('currentAnswers' + handle);
+		},
+
+		log: function log(msg)
+		{
+			this.devMode ? console.log(msg) : null;
 		}
 
 	},
