@@ -1,5 +1,5 @@
 # Inventicator
-_Version 0.5.2_
+_Version 0.5.3_
 
 ---
 
