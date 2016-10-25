@@ -387,12 +387,14 @@ var vueModel = {
 
 		getScore: function getScore(handle)
 		{
+			if (!this.questionsLoaded) return 0;
 			return this.$get('currentScores.' + handle) || 0;
 		},
 
 		getAnswer: function getAnswer(handle)
 		{
-			return this.$get('currentAnswers' + handle);
+			if (!this.questionsLoaded) return null;
+			return this.$get('currentAnswers.' + handle);
 		},
 
 		log: function log(msg)
