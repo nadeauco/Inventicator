@@ -1,5 +1,8 @@
 var apiURL = 'http://inventicator.dev/source.json';
 
+// asa's delimiters
+Vue.config.delimiters = ['~[', ']~'];
+
 var vueModel = {
 
 	el: '#inventicatorApp',
@@ -337,8 +340,14 @@ var vueModel = {
 			this.log("Loading...");
 			this.$http.get(apiURL).then(
 				function(data) {
+					//make sure we have data
+					if (typeof(data) === 'undefined' || typeof(data.body) === 'undefined')
+					{
+						return false;
+					}
+
 					this.log(data);
-					this.source = data.data;
+					this.source = JSON.parse(data.body);
 					this.log("Loaded.");
 					Vue.nextTick(this.setUpQuestions);
 					return true;
