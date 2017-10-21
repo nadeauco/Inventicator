@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 
 	<style>
-
 		.question {
 			margin: 1em;
 			padding: 1em;
@@ -23,79 +22,16 @@
 			padding: 1em;
 		}
 
+		[v-cloak] {
+			display: none !important;
+		}
+
 	</style>
 
 </head>
 <body>
 
-<div id="vueTemplates" style="display: none;">
-
-	<template id="tmp-inv-question">
-		This question could not be loaded.
-	</template>
-
-	<template id="tmp-inv-question-select">
-
-		<h3>{{ question.heading }}</h3>
-		<p><strong>{{ question.caption }}</strong></p>
-		<p><em>{{ question.instructions }}</em></p>
-
-		<select :name='inputName' v-model='question.currentAnswer'>
-			<option v-for="(handle, option) in question.options" :value='handle' :selected='option.default'>
-				{{ option.caption }} ({{ option.score }})
-			</option>
-		</select>
-
-	</template>
-
-	<template id="tmp-inv-question-multiselect">
-
-		<h3>{{ question.heading }}</h3>
-		<p><strong>{{ question.caption }}</strong></p>
-		<p><em>{{ question.instructions }}</em></p>
-
-		<div v-for="(handle, option) in question.options">
-			<label for="#{{ question.handle }}_{{ handle }}">
-				<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}" :value='handle' v-model='question.currentAnswer' :checked='option.default'>
-				{{ option.caption }}
-			</label>
-		</div>
-
-	</template>
-
-	<template id="tmp-inv-question-plusminus">
-
-		<h3>{{ question.heading }}</h3>
-		<p><strong>{{ question.caption }}</strong></p>
-		<p><em>{{ question.instructions }}</em></p>
-
-		<table>
-			<tr v-for="(handle, option) in question.options">
-				<td>
-					{{ option.caption }}
-				</td>
-				<td>
-					<label for="#{{ question.handle }}_{{ handle }}_plus">
-						<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}_plus" value='+{{ handle }}' v-model='question.currentAnswer' :checked='option.default || option.plusDefault'>
-						+
-					</label>
-				</td>
-				<td>
-					<label for="#{{ question.handle }}_{{ handle }}_minus">
-						<input type="checkbox" name="{{ question.handle }}[]" id="{{ question.handle }}_{{ handle }}_minus" value='-{{ handle }}' v-model='question.currentAnswer' :checked='option.default || option.minusDefault'>
-						-
-					</label>
-				</td>
-			</tr>
-		</table>
-
-	</template>
-
-</div>
-
-
-
-<div id="inventicatorApp">
+<div id="inventicatorApp" v-cloak>
 
 	<h1>Inventicator</h1>
 
@@ -168,6 +104,61 @@
 <script src="js/vue-resource.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/inventicator.js"></script>
+
+<script type="text/x-template" id="tmp-inv-question">
+	<div>This question could not be loaded.</div>
+</script>
+<script type="text/x-template" id="tmp-inv-question-select">
+	<div>
+		<h3>~[ question.heading ]~</h3>
+		<p><strong>~[ question.caption ]~</strong></p>
+		<p><em>~[ question.instructions ]~</em></p>
+
+		<select :name='inputName' v-model='question.currentAnswer'>
+			<option v-for="(handle, option) in question.options" :value='handle' :selected='option.default'>
+				~[ option.caption ]~
+			</option>
+		</select>
+	</div>
+</script>
+<script type="text/x-template" id="tmp-inv-question-multiselect">
+	<div>
+		<h3>~[ question.heading ]~</h3>
+		<p><strong>~[ question.caption ]~</strong></p>
+		<p><em>~[ question.instructions ]~</em></p>
+
+		<div v-for="(handle, option) in question.options">
+			<label for="#~[ question.handle ]~_~[ handle ]~">
+				<input type="checkbox" name="~[ question.handle ]~[]" id="~[ question.handle ]~_~[ handle ]~" :value='handle' v-model='question.currentAnswer' :checked='option.default'>
+				~[ option.caption ]~ </label>
+		</div>
+	</div>
+</script>
+<script type="text/x-template" id="tmp-inv-question-plusminus">
+	<div>
+		<h3>~[ question.heading ]~</h3>
+		<p><strong>~[ question.caption ]~</strong></p>
+		<p><em>~[ question.instructions ]~</em></p>
+
+		<table>
+			<tr v-for="(handle, option) in question.options">
+				<td>
+					~[ option.caption ]~
+				</td>
+				<td>
+					<label for="#~[ question.handle ]~_~[ handle ]~_plus">
+						<input type="checkbox" name="~[ question.handle ]~[]" id="~[ question.handle ]~_~[ handle ]~_plus" value='+~[ handle ]~' v-model='question.currentAnswer' :checked='option.default || option.plusDefault'>
+						+ </label>
+				</td>
+				<td>
+					<label for="#~[ question.handle ]~_~[ handle ]~_minus">
+						<input type="checkbox" name="~[ question.handle ]~[]" id="~[ question.handle ]~_~[ handle ]~_minus" value='-~[ handle ]~' v-model='question.currentAnswer' :checked='option.default || option.minusDefault'>
+						- </label>
+				</td>
+			</tr>
+		</table>
+	</div>
+</script>
 
 </body>
 </html>
